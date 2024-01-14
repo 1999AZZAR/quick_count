@@ -1,0 +1,27 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Quick count admin</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="brand-logo"></div>
+        <div class="brand-title">QUICK COUNT</div>
+        <form action="{{ url_for('login') }}" method="post" class="inputs">
+            <label>USERNAME</label>
+            <input type="username" name="username" placeholder="enter your username" />
+            <label>PASSWORD</label>
+            <input type="password" name="password" placeholder="enter your password" />
+            <button type="submit">LOGIN</button>
+        </form>
+    </div>
+</body>
+</html>

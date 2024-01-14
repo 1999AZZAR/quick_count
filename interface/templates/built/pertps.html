@@ -1,0 +1,78 @@
+<!-- pertps.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Count</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/4x4.css') }}">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="overlay" onclick="closeOverlay()"></div>
+
+        <aside class="side-panel">
+            <h3>QUICK COUNT ADMIN PANEL</h2>
+            <div class="toggle-btn" onclick="toggleSidePanel()">☰</div>
+            <ul>
+                <li><a href="{{ url_for('perpartai') }}">Suara Per Partai</a></li>
+                <li><a href="{{ url_for('perdesa') }}">Suara Per Desa</a></li>
+                <li><a href="{{ url_for('percaleg') }}">Suara Per Caleg</a></li>
+                <li><a href="{{ url_for('rawdrive') }}">Raw Data</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            </ul>
+        </aside>
+
+        <div class="main">
+            <div class="header">
+                <h1>QUICK COUNT</h1>
+                <h2>Perolehan hasil suara total desa {{ selected_desa.capitalize() }}</h2>
+            </div>
+
+            <div class="grafik">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="grafik_umum">
+                                <a href="your_link_1" target="_blank" class="image-link">
+                                    <img src="{{ url_for('static', filename='icons/normal/png_16_square.png') }}" alt="Image 1">
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>        
+
+            <h3>perolehan suara berdasarkan tps:</h3>
+
+            <div class="flex-container">
+                <table>
+                    {% for tps in desa_tps %}
+                        {% if loop.index % 4 == 1 %}
+                            <tr>
+                        {% endif %}
+                            <td>
+                                <div class="image-box">
+                                    <a href="{{ url_for('pertps', desa_names=selected_desa, tps=tps|replace('TPS ', '')|int) }}" target="_blank" class="image-link">
+                                        <img src="{{ url_for('static', filename='icons/normal/png_' ~ tps|replace('TPS ', '')|int ~ '_square.png') }}" alt="Image {{ tps }}">
+                                    </a>
+                                    <div class="image-name">{{ tps }}</div>
+                                </div>
+                            </td>
+                        {% if loop.index % 4 == 0 or loop.last %}
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script defer src="{{ url_for('static', filename='script/4x4.js') }}"></script>
+</body>
+</html>
