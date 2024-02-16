@@ -314,7 +314,7 @@ def run_exel():
     return exel_process
 
 if __name__ == '__main__':
-    # drive_mon_process = run_drive_mon()
+    drive_mon_process = run_drive_mon()
     data_translate_process = run_data_translate()
     graph_tps_process = run_graph_tps()
     graph_desa_process = run_graph_desa()
@@ -328,7 +328,7 @@ if __name__ == '__main__':
         app.run(host="0.0.0.0", port=3000, threaded=False)
     except KeyboardInterrupt:
         logging.info("KeyboardInterrupt: Stopping subprocesses...")
-        # drive_mon_process.terminate()
+        drive_mon_process.terminate()
         data_translate_process.terminate()
         graph_tps_process.terminate()
         graph_desa_process.terminate()
@@ -338,7 +338,7 @@ if __name__ == '__main__':
         pie_chart_process.terminate()
         exel_process.terminate()
 
-        # drive_mon_process.wait()
+        drive_mon_process.wait()
         data_translate_process.wait()
         graph_tps_process.wait()
         graph_desa_process.wait()
