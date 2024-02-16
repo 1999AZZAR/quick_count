@@ -1,0 +1,11 @@
+google-api-python-client
+google-auth
+google-auth-oauthlib
+Flask
+Flask-Login
+Werkzeug
+matplotlib
+watchdog
+numpy
+pandas
+XlsxWriter

@@ -1,0 +1,77 @@
+<!-- data.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Count</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/dta.css') }}">
+    <script defer src="{{ url_for('static', filename='script/dta.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='script/download.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/jszip.min.js') }}"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="overlay" onclick="closeOverlay()"></div>
+
+        <aside class="side-panel">
+            <h3>QUICK COUNT ADMIN PANEL</h3>
+            <div class="toggle-btn" onclick="toggleSidePanel()">☰</div>
+            <ul>
+                <li><a href="{{ url_for('perpartai') }}">Suara Per Partai</a></li>
+                <li><a href="{{ url_for('perdesa') }}">Suara Per Desa</a></li>
+                <li><a href="{{ url_for('percaleg') }}">Suara Per Caleg</a></li>
+                <li><a href="{{ url_for('kursi') }}">Kursi</a></li>
+                <li><a href="{{ url_for('data') }}">Data</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            </ul>
+        </aside>
+
+        <div class="main">
+            <div class="header">
+                <h1>QUICK COUNT</h1>
+                <h2>Data</h2>
+                <a href="{{ url_for('download_hasil') }}" class="download-button">
+                    <img src="{{ url_for('static', filename='icons/down.png') }}" alt="Download" id="downloadButton"> 
+                </a>
+            </div>
+
+            <div class="grafik">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="grafik_umum">
+                                <a href="{{ url_for('rawdrive') }}" class="image-link">
+                                    <img src="{{ url_for('static', filename='icons/login_ico.png') }}" alt="Image 1">
+                                </a>
+                                <div class="image-name">Json data</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="grafik_umum">
+                                <a href="{{ url_for('image') }}" class="image-link">
+                                    <img src="{{ url_for('static', filename='icons/login_ico.png') }}" alt="Image 1">
+                                </a>
+                                <div class="image-name">image data</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="grafik_umum">
+                                <a href="{{ url_for('proceed') }}" class="image-link">
+                                    <img src="{{ url_for('static', filename='icons/login_ico.png') }}" alt="Image 2">
+                                </a>
+                                <div class="image-name">DB data</div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

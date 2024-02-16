@@ -1,0 +1,38 @@
+{
+  "GOLKAR": {
+    "total_seats": 1,
+    "seat_numbers": [
+      1
+    ],
+    "values": [
+      3055.0
+    ]
+  },
+  "GELOMBANG": {
+    "total_seats": 1,
+    "seat_numbers": [
+      2
+    ],
+    "values": [
+      1983.0
+    ]
+  },
+  "BURUH": {
+    "total_seats": 1,
+    "seat_numbers": [
+      3
+    ],
+    "values": [
+      1408.0
+    ]
+  },
+  "PKB": {
+    "total_seats": 1,
+    "seat_numbers": [
+      4
+    ],
+    "values": [
+      1301.0
+    ]
+  }
+}

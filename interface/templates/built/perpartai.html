@@ -1,0 +1,88 @@
+<!-- perpartai.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Count</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/4x4.css') }}">
+    <script defer src="{{ url_for('static', filename='script/4x4.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='script/download.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/jszip.min.js') }}"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="overlay" onclick="closeOverlay()"></div>
+
+        <aside class="side-panel">
+            <h3>QUICK COUNT ADMIN PANEL</h3>
+            <div class="toggle-btn" onclick="toggleSidePanel()">☰</div>
+            <ul>
+                <li><a href="{{ url_for('perpartai') }}">Suara Per Partai</a></li>
+                <li><a href="{{ url_for('perdesa') }}">Suara Per Desa</a></li>
+                <li><a href="{{ url_for('percaleg') }}">Suara Per Caleg</a></li>
+                <li><a href="{{ url_for('kursi') }}">Kursi</a></li>
+                <li><a href="{{ url_for('data') }}">Data</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            </ul>
+        </aside>
+
+        <div class="main">
+            <div class="header">
+                <h1>QUICK COUNT</h1>
+                <h2>perolehan hasil suara secara umum</h2>
+            </div>
+
+            <div class="grafik">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="grafik_umum">
+                                <a href="your_link_1" class="image-link">
+                                    <img src="{{ url_for('static', filename='data/perdesa/total_dapil.png') }}" alt="Image {{ dapil }}" onerror="handleImageError(this, '{{ url_for('static', filename='icons/login_ico.png') }}')">
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>        
+
+            <div class="overlay" id="loadingOverlay">
+                <div class="spinner"></div>
+            </div>
+
+            <img src="{{ url_for('static', filename='icons/down.png') }}" alt="Download All" id="downloadButton" onclick="downloadImages()">
+
+            <h3>persentase perolehan suara tiap-tiap partai:</h3>
+
+            <div class="flex-container">
+                <table>
+                    {% for partai_name in partai_names %}
+                        {% if loop.index % 4 == 1 %}
+                            <tr>
+                        {% endif %}
+                            <td>
+                                <div class="image-box">
+                                    {% set image_filename = partai_name ~ '.png' %}
+                                    <a href="{{ url_for('perpartai', partai_name=partai_name) }}" class="image-link">
+                                        <img src="{{ url_for('static', filename='data/perpartai/' ~ image_filename) }}" alt="Image {{ tps }}" onerror="handleImageError(this, '{{ url_for('static', filename='icons/login_ico.png') }}')">
+                                    </a>
+                                    <div class="image-name">{{ partai_name }}</div>
+                                </div>
+                            </td>
+                        {% if loop.index % 4 == 0 or loop.last %}
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div> 
+        </div>
+
+    </div>
+    
+</body>
+</html>
